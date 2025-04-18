@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Breast Cancer Prediction</h1>
+        <p>Enter the cell characteristics to predict if the breast cancer is malignant or benign.</p>
+        <form id="prediction-form">
+            {% for feature in feature_names %}
+            <div class="form-group">
+                <label for="{{ feature }}">{{ feature.replace('_', ' ').title() }}:</label>
+                <input type="number" step="any" name="{{ feature }}" id="{{ feature }}" required>
+            </div>
+            {% endfor %}
+            <button type="submit">Predict</button>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
